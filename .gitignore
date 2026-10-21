@@ -1,0 +1,18 @@
+.work/
+.tools/
+.vs/
+artifacts/
+release*/
+**/bin/
+**/obj/
+__pycache__/
+*.py[cod]
+*.user
+*.suo
+
+# Local editor and document temporary files
+~$*
+.~lock.*#
+.DS_Store
+Thumbs.db
+Desktop.ini

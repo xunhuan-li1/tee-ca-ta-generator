@@ -1,0 +1,2260 @@
+{
+  "Algorithms": [
+    {
+      "Id": "TEE_ALG_AES_CBC_MAC_NOPAD",
+      "Value": "0x30000110",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CBC_MAC_PKCS5",
+      "Value": "0x30000510",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CBC_NOPAD",
+      "Value": "0x10000110",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CCM",
+      "Value": "0x40000710",
+      "Family": "ae",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CMAC",
+      "Value": "0x30000610",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CTR",
+      "Value": "0x10000210",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_CTS",
+      "Value": "0x10000310",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_ECB_NOPAD",
+      "Value": "0x10000010",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_GCM",
+      "Value": "0x40000810",
+      "Family": "ae",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_AES_XTS",
+      "Value": "0x10000410",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_AES",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES3_CBC_MAC_NOPAD",
+      "Value": "0x30000113",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES3",
+      "KeyBits": 192,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES3_CBC_MAC_PKCS5",
+      "Value": "0x30000513",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES3",
+      "KeyBits": 192,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES3_CBC_NOPAD",
+      "Value": "0x10000113",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES3",
+      "KeyBits": 192,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES3_ECB_NOPAD",
+      "Value": "0x10000013",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES3",
+      "KeyBits": 192,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES_CBC_MAC_NOPAD",
+      "Value": "0x30000111",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES",
+      "KeyBits": 64,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES_CBC_MAC_PKCS5",
+      "Value": "0x30000511",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES",
+      "KeyBits": 64,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES_CBC_NOPAD",
+      "Value": "0x10000111",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES",
+      "KeyBits": 64,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DES_ECB_NOPAD",
+      "Value": "0x10000011",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DES",
+      "KeyBits": 64,
+      "DigestBytes": 32,
+      "BlockSize": 8,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DH_DERIVE_SHARED_SECRET",
+      "Value": "0x80000032",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DH_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA1",
+      "Value": "0x70002131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 1024,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA224",
+      "Value": "0x70003131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA256",
+      "Value": "0x70004131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA3_224",
+      "Value": "0x70008131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA3_256",
+      "Value": "0x70009131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA3_384",
+      "Value": "0x7000A131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_DSA_SHA3_512",
+      "Value": "0x7000B131",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_DSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDH_DERIVE_SHARED_SECRET",
+      "Value": "0x80000042",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_ECDH_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA1",
+      "Value": "0x70001042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA224",
+      "Value": "0x70002042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA256",
+      "Value": "0x70003042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA384",
+      "Value": "0x70004042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA3_224",
+      "Value": "0x70006042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA3_256",
+      "Value": "0x70007042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA3_384",
+      "Value": "0x70008042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA3_512",
+      "Value": "0x70009042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ECDSA_SHA512",
+      "Value": "0x70005042",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "TEE_TYPE_ECDSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ED25519",
+      "Value": "0x70006043",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_ED25519_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_ED448",
+      "Value": "0x70006044",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_ED448_KEYPAIR",
+      "KeyBits": 448,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HKDF",
+      "Value": "0x80000047",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_HKDF",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_MD5",
+      "Value": "0x30000001",
+      "Family": "mac",
+      "Digest": "TEE_ALG_MD5",
+      "KeyType": "TEE_TYPE_HMAC_MD5",
+      "KeyBits": 256,
+      "DigestBytes": 16,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA1",
+      "Value": "0x30000002",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_HMAC_SHA1",
+      "KeyBits": 256,
+      "DigestBytes": 20,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA224",
+      "Value": "0x30000003",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_HMAC_SHA224",
+      "KeyBits": 256,
+      "DigestBytes": 28,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA256",
+      "Value": "0x30000004",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_HMAC_SHA256",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA384",
+      "Value": "0x30000005",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "TEE_TYPE_HMAC_SHA384",
+      "KeyBits": 256,
+      "DigestBytes": 48,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA3_224",
+      "Value": "0x30000008",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_HMAC_SHA3_224",
+      "KeyBits": 256,
+      "DigestBytes": 28,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA3_256",
+      "Value": "0x30000009",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_HMAC_SHA3_256",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA3_384",
+      "Value": "0x3000000A",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_HMAC_SHA3_384",
+      "KeyBits": 256,
+      "DigestBytes": 48,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA3_512",
+      "Value": "0x3000000B",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_HMAC_SHA3_512",
+      "KeyBits": 256,
+      "DigestBytes": 64,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SHA512",
+      "Value": "0x30000006",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "TEE_TYPE_HMAC_SHA512",
+      "KeyBits": 256,
+      "DigestBytes": 64,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_HMAC_SM3",
+      "Value": "0x30000007",
+      "Family": "mac",
+      "Digest": "TEE_ALG_SM3",
+      "KeyType": "TEE_TYPE_HMAC_SM3",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 1,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_MD5",
+      "Value": "0x50000001",
+      "Family": "digest",
+      "Digest": "TEE_ALG_MD5",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 16,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA1",
+      "Value": "0x60210230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA224",
+      "Value": "0x60310230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA256",
+      "Value": "0x60410230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA384",
+      "Value": "0x60510230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA3_224",
+      "Value": "0x60810230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA3_256",
+      "Value": "0x60910230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA3_384",
+      "Value": "0x60A10230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA3_512",
+      "Value": "0x60B10230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA512",
+      "Value": "0x60610230",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSAES_PKCS1_V1_5",
+      "Value": "0x60000130",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA1",
+      "Value": "0x70212930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA224",
+      "Value": "0x70313930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA256",
+      "Value": "0x70414930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA384",
+      "Value": "0x70515930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA3_224",
+      "Value": "0x70818930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA3_256",
+      "Value": "0x70919930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA3_384",
+      "Value": "0x70A1A930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA3_512",
+      "Value": "0x70B1B930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA512",
+      "Value": "0x70616930",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_MD5",
+      "Value": "0x70001830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_MD5",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 16,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA1",
+      "Value": "0x70002830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA224",
+      "Value": "0x70003830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA256",
+      "Value": "0x70004830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA384",
+      "Value": "0x70005830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA3_224",
+      "Value": "0x70008830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA3_256",
+      "Value": "0x70009830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA3_384",
+      "Value": "0x7000A830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA3_512",
+      "Value": "0x7000B830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSASSA_PKCS1_V1_5_SHA512",
+      "Value": "0x70006830",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_RSA_NOPAD",
+      "Value": "0x60000030",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_RSA_KEYPAIR",
+      "KeyBits": 2048,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA1",
+      "Value": "0x50000002",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA1",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 20,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA224",
+      "Value": "0x50000003",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA224",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA256",
+      "Value": "0x50000004",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA384",
+      "Value": "0x50000005",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA384",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA3_224",
+      "Value": "0x50000008",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA3_224",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 28,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA3_256",
+      "Value": "0x50000009",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA3_256",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA3_384",
+      "Value": "0x5000000A",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA3_384",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 48,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA3_512",
+      "Value": "0x5000000B",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA3_512",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHA512",
+      "Value": "0x50000006",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA512",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 64,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHAKE128",
+      "Value": "0x50000101",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SHAKE256",
+      "Value": "0x50000102",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM2_DSA_SM3",
+      "Value": "0x70006045",
+      "Family": "sign",
+      "Digest": "TEE_ALG_SM3",
+      "KeyType": "TEE_TYPE_SM2_DSA_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM2_KEP",
+      "Value": "0x60000045",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM2_KEP_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM2_PKE",
+      "Value": "0x80000046",
+      "Family": "encrypt",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM2_PKE_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM3",
+      "Value": "0x50000007",
+      "Family": "digest",
+      "Digest": "TEE_ALG_SM3",
+      "KeyType": "",
+      "KeyBits": 0,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM4_CBC_NOPAD",
+      "Value": "0x10000114",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM4",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM4_CBC_PKCS5",
+      "Value": "0x10000115",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM4",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM4_CTR",
+      "Value": "0x10000214",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM4",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM4_ECB_NOPAD",
+      "Value": "0x10000014",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM4",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_SM4_ECB_PKCS5",
+      "Value": "0x10000015",
+      "Family": "cipher",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_SM4",
+      "KeyBits": 128,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_X25519",
+      "Value": "0x80000044",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_X25519_KEYPAIR",
+      "KeyBits": 256,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    },
+    {
+      "Id": "TEE_ALG_X448",
+      "Value": "0x80000045",
+      "Family": "derive",
+      "Digest": "TEE_ALG_SHA256",
+      "KeyType": "TEE_TYPE_X448_KEYPAIR",
+      "KeyBits": 448,
+      "DigestBytes": 32,
+      "BlockSize": 16,
+      "Legacy": false
+    }
+  ],
+  "Curves": [
+    {
+      "Id": "TEE_ECC_CURVE_NIST_P192",
+      "Value": "0x00000001",
+      "Bits": 192,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_NIST_P224",
+      "Value": "0x00000002",
+      "Bits": 224,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_NIST_P256",
+      "Value": "0x00000003",
+      "Bits": 256,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_NIST_P384",
+      "Value": "0x00000004",
+      "Bits": 384,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_NIST_P521",
+      "Value": "0x00000005",
+      "Bits": 521,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P160r1",
+      "Value": "0x00000101",
+      "Bits": 160,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P192r1",
+      "Value": "0x00000102",
+      "Bits": 192,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P224r1",
+      "Value": "0x00000103",
+      "Bits": 224,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P256r1",
+      "Value": "0x00000104",
+      "Bits": 256,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P320r1",
+      "Value": "0x00000105",
+      "Bits": 320,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P384r1",
+      "Value": "0x00000106",
+      "Bits": 384,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P512r1",
+      "Value": "0x00000107",
+      "Bits": 512,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P160t1",
+      "Value": "0x00000201",
+      "Bits": 160,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P192t1",
+      "Value": "0x00000202",
+      "Bits": 192,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P224t1",
+      "Value": "0x00000203",
+      "Bits": 224,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P256t1",
+      "Value": "0x00000204",
+      "Bits": 256,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P320t1",
+      "Value": "0x00000205",
+      "Bits": 320,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P384t1",
+      "Value": "0x00000206",
+      "Bits": 384,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_BSI_P512t1",
+      "Value": "0x00000207",
+      "Bits": 512,
+      "Generic": true
+    },
+    {
+      "Id": "TEE_ECC_CURVE_25519",
+      "Value": "0x00000300",
+      "Bits": 256,
+      "Generic": false
+    },
+    {
+      "Id": "TEE_ECC_CURVE_448",
+      "Value": "0x00000301",
+      "Bits": 448,
+      "Generic": false
+    },
+    {
+      "Id": "TEE_ECC_CURVE_SM2",
+      "Value": "0x00000400",
+      "Bits": 256,
+      "Generic": false
+    }
+  ],
+  "Apis": [
+    {
+      "Name": "TA_CloseSessionEntryPoint",
+      "Group": "Core",
+      "Prototype": "void TA_CloseSessionEntryPoint(void *sessionContext);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TA_CreateEntryPoint",
+      "Group": "Core",
+      "Prototype": "TEE_Result TA_CreateEntryPoint(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TA_DestroyEntryPoint",
+      "Group": "Core",
+      "Prototype": "void TA_DestroyEntryPoint(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TA_InvokeCommandEntryPoint",
+      "Group": "Core",
+      "Prototype": "TEE_Result TA_InvokeCommandEntryPoint(void *sessionContext, uint32_t commandID, uint32_t paramTypes, TEE_Param params[TEE_NUM_PARAMS]);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TA_OpenSessionEntryPoint",
+      "Group": "Core",
+      "Prototype": "TEE_Result TA_OpenSessionEntryPoint(uint32_t paramTypes, TEE_Param params[TEE_NUM_PARAMS], void **sessionContext);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_AllocateSharedMemory",
+      "Group": "Client",
+      "Prototype": "TEEC_Result TEEC_AllocateSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_CloseSession",
+      "Group": "Client",
+      "Prototype": "void TEEC_CloseSession(TEEC_Session *session);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_FinalizeContext",
+      "Group": "Client",
+      "Prototype": "void TEEC_FinalizeContext(TEEC_Context *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_InitializeContext",
+      "Group": "Client",
+      "Prototype": "TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_InvokeCommand",
+      "Group": "Client",
+      "Prototype": "TEEC_Result TEEC_InvokeCommand(TEEC_Session *session, uint32_t commandID, TEEC_Operation *operation, uint32_t *returnOrigin);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_OpenSession",
+      "Group": "Client",
+      "Prototype": "TEEC_Result TEEC_OpenSession(TEEC_Context *context, TEEC_Session *session, const TEEC_UUID *destination, uint32_t connectionMethod, const void *connectionData, TEEC_Operation *operation, uint32_t *returnOrigin);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_RegisterSharedMemory",
+      "Group": "Client",
+      "Prototype": "TEEC_Result TEEC_RegisterSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_ReleaseSharedMemory",
+      "Group": "Client",
+      "Prototype": "void TEEC_ReleaseSharedMemory(TEEC_SharedMemory *sharedMemory);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEEC_RequestCancellation",
+      "Group": "Client",
+      "Prototype": "void TEEC_RequestCancellation(TEEC_Operation *operation);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AEDecryptFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AEDecryptFinal(TEE_OperationHandle operation, const void *srcData, size_t srcLen, void *destData, size_t *destLen, void *tag, size_t tagLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AEEncryptFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AEEncryptFinal(TEE_OperationHandle operation, const void *srcData, size_t srcLen, void *destData, size_t *destLen, void *tag, size_t *tagLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AEInit",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AEInit(TEE_OperationHandle operation, const void *nonce, size_t nonceLen, uint32_t tagLen, size_t AADLen, size_t payloadLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AEUpdate",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AEUpdate(TEE_OperationHandle operation, const void *srcData, size_t srcLen, void *destData, size_t *destLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AEUpdateAAD",
+      "Group": "Core",
+      "Prototype": "void TEE_AEUpdateAAD(TEE_OperationHandle operation, const void *AADdata, size_t AADdataLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AllocateOperation",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AllocateOperation(TEE_OperationHandle *operation, uint32_t algorithm, uint32_t mode, uint32_t maxKeySize);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AllocatePersistentObjectEnumerator",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AllocatePersistentObjectEnumerator(TEE_ObjectEnumHandle * objectEnumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AllocatePropertyEnumerator",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AllocateTransientObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AllocateTransientObject(TEE_ObjectType objectType, uint32_t maxObjectSize, TEE_ObjectHandle *object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AsymmetricDecrypt",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AsymmetricDecrypt(TEE_OperationHandle operation, const TEE_Attribute *params, uint32_t paramCount, const void *srcData, size_t srcLen, void *destData, size_t *destLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AsymmetricEncrypt",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AsymmetricEncrypt(TEE_OperationHandle operation, const TEE_Attribute *params, uint32_t paramCount, const void *srcData, size_t srcLen, void *destData, size_t *destLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AsymmetricSignDigest",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AsymmetricSignDigest(TEE_OperationHandle operation, const TEE_Attribute *params, uint32_t paramCount, const void *digest, size_t digestLen, void *signature, size_t *signatureLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_AsymmetricVerifyDigest",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_AsymmetricVerifyDigest(TEE_OperationHandle operation, const TEE_Attribute *params, uint32_t paramCount, const void *digest, size_t digestLen, const void *signature, size_t signatureLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntAbs",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntAbs(TEE_BigInt *dest, const TEE_BigInt *src);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntAdd",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntAdd(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntAddMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntAddMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntAssign",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntAssign(TEE_BigInt *dest, const TEE_BigInt *src);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntCmp",
+      "Group": "Core",
+      "Prototype": "int32_t TEE_BigIntCmp(const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntCmpS32",
+      "Group": "Core",
+      "Prototype": "int32_t TEE_BigIntCmpS32(const TEE_BigInt *op, int32_t shortVal);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntComputeExtendedGcd",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntComputeExtendedGcd(TEE_BigInt *gcd, TEE_BigInt *u, TEE_BigInt *v, const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntComputeFMM",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1, const TEE_BigIntFMM *op2, const TEE_BigInt *n, const TEE_BigIntFMMContext *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertFromFMM",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntConvertFromFMM(TEE_BigInt *dest, const TEE_BigIntFMM *src, const TEE_BigInt *n, const TEE_BigIntFMMContext *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertFromOctetString",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntConvertFromOctetString(TEE_BigInt *dest, const uint8_t *buffer, size_t bufferLen, int32_t sign);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertFromS32",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntConvertFromS32(TEE_BigInt *dest, int32_t shortVal);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertToFMM",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntConvertToFMM(TEE_BigIntFMM *dest, const TEE_BigInt *src, const TEE_BigInt *n, const TEE_BigIntFMMContext *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertToOctetString",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntConvertToOctetString(uint8_t *buffer, size_t *bufferLen, const TEE_BigInt *bigInt);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntConvertToS32",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntConvertToS32(int32_t *dest, const TEE_BigInt *src);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntDiv",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntDiv(TEE_BigInt *dest_q, TEE_BigInt *dest_r, const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntExpMod",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntExpMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2, const TEE_BigInt *n, const TEE_BigIntFMMContext *context);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntFMMContextSizeInU32",
+      "Group": "Core",
+      "Prototype": "size_t TEE_BigIntFMMContextSizeInU32(size_t modulusSizeInBits);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntFMMSizeInU32",
+      "Group": "Core",
+      "Prototype": "size_t TEE_BigIntFMMSizeInU32(size_t modulusSizeInBits);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntGetBit",
+      "Group": "Core",
+      "Prototype": "bool TEE_BigIntGetBit(const TEE_BigInt *src, uint32_t bitIndex);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntGetBitCount",
+      "Group": "Core",
+      "Prototype": "uint32_t TEE_BigIntGetBitCount(const TEE_BigInt *src);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntInit",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntInit(TEE_BigInt *bigInt, size_t len);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntInitFMM",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntInitFMM(TEE_BigIntFMM *bigIntFMM, size_t len);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntInitFMMContext1",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntInitFMMContext1(TEE_BigIntFMMContext *context, size_t len, const TEE_BigInt *modulus);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntInvMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntInvMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntIsProbablePrime",
+      "Group": "Core",
+      "Prototype": "int32_t TEE_BigIntIsProbablePrime(const TEE_BigInt *op, uint32_t confidenceLevel);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntMul",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntMul(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntMulMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntMulMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntNeg",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntNeg(TEE_BigInt *dest, const TEE_BigInt *op);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntRelativePrime",
+      "Group": "Core",
+      "Prototype": "bool TEE_BigIntRelativePrime(const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSetBit",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_BigIntSetBit(TEE_BigInt *op, uint32_t bitIndex, bool value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntShiftRight",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntShiftRight(TEE_BigInt *dest, const TEE_BigInt *op, size_t bits);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSizeInU32",
+      "Group": "Core",
+      "Prototype": "TEE_BigIntSizeInU32(n)",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSquare",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntSquare(TEE_BigInt *dest, const TEE_BigInt *op);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSquareMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntSquareMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSub",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntSub(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_BigIntSubMod",
+      "Group": "Core",
+      "Prototype": "void TEE_BigIntSubMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op2, const TEE_BigInt *n);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CheckMemoryAccessRights",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CheckMemoryAccessRights(uint32_t accessFlags, void *buffer, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CipherDoFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CipherDoFinal(TEE_OperationHandle operation, const void *srcData, size_t srcLen, void *destData, size_t *destLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CipherInit",
+      "Group": "Core",
+      "Prototype": "void TEE_CipherInit(TEE_OperationHandle operation, const void *IV, size_t IVLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CipherUpdate",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CipherUpdate(TEE_OperationHandle operation, const void *srcData, size_t srcLen, void *destData, size_t *destLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CloseAndDeletePersistentObject1",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CloseAndDeletePersistentObject1(TEE_ObjectHandle object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CloseObject",
+      "Group": "Core",
+      "Prototype": "void TEE_CloseObject(TEE_ObjectHandle object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CloseTASession",
+      "Group": "Core",
+      "Prototype": "void TEE_CloseTASession(TEE_TASessionHandle session);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CopyObjectAttributes1",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CopyObjectAttributes1(TEE_ObjectHandle destObject, TEE_ObjectHandle srcObject);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CopyOperation",
+      "Group": "Core",
+      "Prototype": "void TEE_CopyOperation(TEE_OperationHandle dstOperation, TEE_OperationHandle srcOperation);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_CreatePersistentObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_CreatePersistentObject(uint32_t storageID, const void *objectID, size_t objectIDLen, uint32_t flags, TEE_ObjectHandle attributes, const void *initialData, size_t initialDataLen, TEE_ObjectHandle *object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_DeriveKey",
+      "Group": "Core",
+      "Prototype": "void TEE_DeriveKey(TEE_OperationHandle operation, const TEE_Attribute *params, uint32_t paramCount, TEE_ObjectHandle derivedKey);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_DigestDoFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_DigestDoFinal(TEE_OperationHandle operation, const void *chunk, size_t chunkLen, void *hash, size_t *hashLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_DigestExtract",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_DigestExtract(TEE_OperationHandle operation, void *hash, size_t *hashLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_DigestUpdate",
+      "Group": "Core",
+      "Prototype": "void TEE_DigestUpdate(TEE_OperationHandle operation, const void *chunk, size_t chunkSize);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_Free",
+      "Group": "Core",
+      "Prototype": "void TEE_Free(void *buffer);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_FreeOperation",
+      "Group": "Core",
+      "Prototype": "void TEE_FreeOperation(TEE_OperationHandle operation);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_FreePersistentObjectEnumerator",
+      "Group": "Core",
+      "Prototype": "void TEE_FreePersistentObjectEnumerator(TEE_ObjectEnumHandle objectEnumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_FreePropertyEnumerator",
+      "Group": "Core",
+      "Prototype": "void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_FreeTransientObject",
+      "Group": "Core",
+      "Prototype": "void TEE_FreeTransientObject(TEE_ObjectHandle object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GenerateKey",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GenerateKey(TEE_ObjectHandle object, uint32_t keySize, const TEE_Attribute *params, uint32_t paramCount);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GenerateRandom",
+      "Group": "Core",
+      "Prototype": "void TEE_GenerateRandom(void *randomBuffer, size_t randomBufferLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetCancellationFlag",
+      "Group": "Core",
+      "Prototype": "bool TEE_GetCancellationFlag(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetInstanceData",
+      "Group": "Core",
+      "Prototype": "const void *TEE_GetInstanceData(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetNextPersistentObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetNextPersistentObject(TEE_ObjectEnumHandle objectEnumerator, TEE_ObjectInfo *objectInfo, void *objectID, size_t *objectIDLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetNextProperty",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetObjectBufferAttribute",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetObjectBufferAttribute(TEE_ObjectHandle object, uint32_t attributeID, void *buffer, size_t *size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetObjectInfo1",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetObjectInfo1(TEE_ObjectHandle object, TEE_ObjectInfo *objectInfo);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetObjectValueAttribute",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetObjectValueAttribute(TEE_ObjectHandle object, uint32_t attributeID, uint32_t *a, uint32_t *b);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetOperationInfo",
+      "Group": "Core",
+      "Prototype": "void TEE_GetOperationInfo(TEE_OperationHandle operation, TEE_OperationInfo *operationInfo);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetOperationInfoMultiple",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetOperationInfoMultiple(TEE_OperationHandle operation, TEE_OperationInfoMultiple *operationInfoMultiple, size_t *operationSize);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsBinaryBlock",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, const char *name, void *valueBuffer, size_t *valueBufferLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsBool",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const char *name, bool *value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsIdentity",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_Identity *value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsString",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const char *name, char *valueBuffer, size_t *valueBufferLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsU32",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint32_t *value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsU64",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint64_t *value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyAsUUID",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_UUID *value);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetPropertyName",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, size_t *nameBufferLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetREETime",
+      "Group": "Core",
+      "Prototype": "void TEE_GetREETime(TEE_Time *time);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetSystemTime",
+      "Group": "Core",
+      "Prototype": "void TEE_GetSystemTime(TEE_Time *time);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_GetTAPersistentTime",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_GetTAPersistentTime(TEE_Time *time);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_InitRefAttribute",
+      "Group": "Core",
+      "Prototype": "void TEE_InitRefAttribute(TEE_Attribute *attr, uint32_t attributeID, const void *buffer, size_t length);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_InitValueAttribute",
+      "Group": "Core",
+      "Prototype": "void TEE_InitValueAttribute(TEE_Attribute *attr, uint32_t attributeID, uint32_t a, uint32_t b);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_InvokeTACommand",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_InvokeTACommand(TEE_TASessionHandle session, uint32_t cancellationRequestTimeout, uint32_t commandID, uint32_t paramTypes, TEE_Param params[TEE_NUM_PARAMS], uint32_t *returnOrigin);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_IsAlgorithmSupported",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_IsAlgorithmSupported(uint32_t algId, uint32_t element);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MACCompareFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_MACCompareFinal(TEE_OperationHandle operation, const void *message, size_t messageLen, const void *mac, size_t macLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MACComputeFinal",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_MACComputeFinal(TEE_OperationHandle operation, const void *message, size_t messageLen, void *mac, size_t *macLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MACInit",
+      "Group": "Core",
+      "Prototype": "void TEE_MACInit(TEE_OperationHandle operation, const void *IV, size_t IVLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MACUpdate",
+      "Group": "Core",
+      "Prototype": "void TEE_MACUpdate(TEE_OperationHandle operation, const void *chunk, size_t chunkSize);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_Malloc",
+      "Group": "Core",
+      "Prototype": "void *TEE_Malloc(size_t size, uint32_t hint);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MaskCancellation",
+      "Group": "Core",
+      "Prototype": "bool TEE_MaskCancellation(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MemCompare",
+      "Group": "Core",
+      "Prototype": "int32_t TEE_MemCompare(const void *buffer1, const void *buffer2, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MemFill",
+      "Group": "Core",
+      "Prototype": "void TEE_MemFill(void *buff, uint32_t x, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_MemMove",
+      "Group": "Core",
+      "Prototype": "void TEE_MemMove(void *dest, const void *src, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_OpenPersistentObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_OpenPersistentObject(uint32_t storageID, const void *objectID, size_t objectIDLen, uint32_t flags, TEE_ObjectHandle *object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_OpenTASession",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_OpenTASession(const TEE_UUID *destination, uint32_t cancellationRequestTimeout, uint32_t paramTypes, TEE_Param params[TEE_NUM_PARAMS], TEE_TASessionHandle *session, uint32_t *returnOrigin);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_PopulateTransientObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_PopulateTransientObject(TEE_ObjectHandle object, const TEE_Attribute *attrs, uint32_t attrCount);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_ReadObjectData",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_ReadObjectData(TEE_ObjectHandle object, void *buffer, size_t size, size_t *count);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_Realloc",
+      "Group": "Core",
+      "Prototype": "void *TEE_Realloc(void *buffer, size_t newSize);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_RenamePersistentObject",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_RenamePersistentObject(TEE_ObjectHandle object, const void *newObjectID, size_t newObjectIDLen);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_ResetOperation",
+      "Group": "Core",
+      "Prototype": "void TEE_ResetOperation(TEE_OperationHandle operation);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_ResetPersistentObjectEnumerator",
+      "Group": "Core",
+      "Prototype": "void TEE_ResetPersistentObjectEnumerator(TEE_ObjectEnumHandle objectEnumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_ResetPropertyEnumerator",
+      "Group": "Core",
+      "Prototype": "void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_ResetTransientObject",
+      "Group": "Core",
+      "Prototype": "void TEE_ResetTransientObject(TEE_ObjectHandle object);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_RestrictObjectUsage1",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_RestrictObjectUsage1(TEE_ObjectHandle object, uint32_t objectUsage);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_SeekObjectData",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_SeekObjectData(TEE_ObjectHandle object, intmax_t offset, TEE_Whence whence);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_SetInstanceData",
+      "Group": "Core",
+      "Prototype": "void TEE_SetInstanceData(const void *instanceData);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_SetOperationKey",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_SetOperationKey(TEE_OperationHandle operation, TEE_ObjectHandle key);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_SetOperationKey2",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_SetOperationKey2(TEE_OperationHandle operation, TEE_ObjectHandle key1, TEE_ObjectHandle key2);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_SetTAPersistentTime",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_SetTAPersistentTime(const TEE_Time *time);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_StartPersistentObjectEnumerator",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_StartPersistentObjectEnumerator(TEE_ObjectEnumHandle objectEnumerator, uint32_t storageID);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_StartPropertyEnumerator",
+      "Group": "Core",
+      "Prototype": "void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle propSet);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_TruncateObjectData",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_TruncateObjectData(TEE_ObjectHandle object, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_UnmaskCancellation",
+      "Group": "Core",
+      "Prototype": "bool TEE_UnmaskCancellation(void);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_Wait",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_Wait(uint32_t timeout);",
+      "Optional": false,
+      "Deprecated": false
+    },
+    {
+      "Name": "TEE_WriteObjectData",
+      "Group": "Core",
+      "Prototype": "TEE_Result TEE_WriteObjectData(TEE_ObjectHandle object, const void *buffer, size_t size);",
+      "Optional": false,
+      "Deprecated": false
+    }
+  ],
+  "Sources": {
+    "Core": "https://globalplatform.org/wp-content/uploads/2021/03/GPD_TEE_Internal_Core_API_Specification_v1.3.1_PublicRelease_CC.pdf",
+    "Client": "https://globalplatform.org/wp-content/uploads/2010/07/TEE_Client_API_Specification-V1.0.pdf",
+    "Errata": "https://globalplatform.org/specs-library/tee-client-api-specification-v1-0-errata-and-precisions-v2/",
+    "Headers": "https://github.com/OP-TEE/optee_os/tree/4.10.0/lib/libutee/include",
+    "ClientHeaders": "https://github.com/OP-TEE/optee_client/tree/4.10.0/libteec/include"
+  }
+}
