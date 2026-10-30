@@ -48,18 +48,25 @@ POSSIBILITY OF SUCH DAMAGE.
 ## .NET binary releases
 
 Self-contained releases also contain Microsoft .NET runtime components. The
-build script includes the installed .NET SDK's LICENSE and ThirdPartyNotices
-when available. The bundled .NET notices are under `licenses/dotnet/`. Source users obtain .NET separately.
+Windows build script copies the installed .NET SDK's LICENSE and
+ThirdPartyNotices into the output directory when available. Repository copies
+are under `licenses/dotnet/`. The Linux build requires these files, embeds them
+and exposes them through `--licenses`. Source users obtain .NET separately.
 
 ## LLVM clang-format
 
-Generated C/H files use LLVM clang-format 18.1.8 for Windows x64, from
+Generated C/H files use LLVM clang-format 18.1.8 for Windows x64 and Linux x64, from
 https://pypi.org/project/clang-format/18.1.8/
 Wheel: clang_format-18.1.8-py2.py3-none-win_amd64.whl
 Wheel SHA-256: 6ca6768270e291495174faa6d8c082aa0181722b29ef8e36558b397069fa4a2d
 The checksum was verified against PyPI before extracting the executable.
 See tools/formatter/LICENSE.md and COPYING.md for upstream licenses.
-The single-file release embeds the formatter and its notices.
+The Windows single-file release embeds the formatter and its notices.
+Linux builds download the manylinux2014 x86_64 wheel from the same PyPI release,
+verify the published SHA-256, and embed the formatter plus its notices in the
+single executable. Run `./gp-project-generator --licenses` to read the original
+project license, LLVM/clang-format notices, .NET notices, and formatter download
+URL and checksums.
 
 ## Algorithm references
 

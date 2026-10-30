@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>gp-project-generator</AssemblyName>
+    <Version>1.0.0</Version>
+    <DebugType>None</DebugType>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../src/*.cs" Exclude="../src/MainWindow*.cs;../src/Program.cs" Link="Shared/%(Filename)%(Extension)" />
+    <EmbeddedResource Include="../assets/**/*" Link="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="../LICENSE" Link="Assets/project_license.txt" />
+    <EmbeddedResource Include="../.tools/formatter-linux-x64/clang-format" LogicalName="GpStudio.Bundle.formatter" />
+    <EmbeddedResource Include="../tools/formatter/style.yaml" LogicalName="GpStudio.Bundle.style.yaml" />
+    <EmbeddedResource Include="example-project.json" LogicalName="GpStudio.Bundle.example-project.json" />
+    <Content Include="../AI_GUIDE.md" Link="AI_GUIDE.md" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <EmbeddedResource Include="../NOTICE.md" LogicalName="GpStudio.Bundle.NOTICE.md" />
+    <EmbeddedResource Include="../tools/formatter/LICENSE.md" LogicalName="GpStudio.Bundle.LLVM-LICENSE.md" />
+    <EmbeddedResource Include="../tools/formatter/COPYING.md" LogicalName="GpStudio.Bundle.clang-format-COPYING.md" />
+    <EmbeddedResource Include="../.tools/formatter-linux-x64/download-source.json" LogicalName="GpStudio.Bundle.formatter-source.json" />
+    <EmbeddedResource Include="../.tools/linux-notices/LICENSE.txt" LogicalName="GpStudio.Bundle.DOTNET-LICENSE.txt" />
+    <EmbeddedResource Include="../.tools/linux-notices/ThirdPartyNotices.txt" LogicalName="GpStudio.Bundle.DOTNET-ThirdPartyNotices.txt" />
+  </ItemGroup>
+</Project>

@@ -16,3 +16,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Local archive of the Linux package (avoid duplicating the unpacked release)
+/GP-Project-Generator-linux-x64.tar.gz

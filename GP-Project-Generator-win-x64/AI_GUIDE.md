@@ -1,8 +1,20 @@
 # GP Project Generator — AI Guide
 
-Use this guide to turn a user request into a CA/TA project. You need local file access and permission to run `GP-Project-Generator.exe` on Windows. The EXE runs without Python or a .NET SDK. Compiling the generated project requires a separate OP-TEE development environment.
+Use this guide to turn a user request into a CA/TA project. You need local file access and permission to run `GP-Project-Generator.exe` on Windows or `./gp-project-generator` on Linux. The published packages run without Python or a .NET SDK. Compiling the generated project requires a separate OP-TEE development environment.
 
 The UI starts in English. Users can switch to Chinese from the language dropdown for the current session.
+
+## Linux command-line usage
+
+The Linux x64 package uses the same configuration and commands described below. Replace `GP-Project-Generator.exe` with `./gp-project-generator`. There is no graphical interface on Linux. Only the executable is required to run. The formatter and runtime are embedded. The guide is supplied as a separate `AI_GUIDE.md` in both the Windows and Linux distributions; it is not embedded in the program. An AI assistant can read it directly without an export command. Run `./gp-project-generator --help` for usage or `--example > project.json` for an initial configuration. Use `--licenses` to read the Linux program's embedded licenses and third-party notices. Components are extracted to a writable cache that must allow execution; the program directory does not need to be writable.
+
+```bash
+./gp-project-generator --describe catalog.json
+./gp-project-generator --validate project.json validate-report.json
+./gp-project-generator --generate project.json generated generate-report.json
+```
+
+The shell waits for each command automatically. Exit code 0 means success; 1 means an error. Errors are printed to standard error and, once validation or generation starts, recorded in the JSON report. Early usage or path errors may not produce a new report. Check the exit code and the current report's `Success` field before continuing. A successful generation report does not mean the CA/TA has been compiled or executed. Start with the configuration exported by `--example`; change its UUID for a separate TA and select a new output directory.
 
 ## Start here
 
@@ -134,7 +146,7 @@ Do not add company-specific interfaces or present OP-TEE extensions outside this
 
 Without an explicit ECDSA curve, SHA1/SHA224/SHA256/SHA384/SHA512 use P192/P224/P256/P384/P521 respectively. An explicitly selected curve is preserved. A target may restrict digest/curve combinations.
 
-OP-TEE 4.10.0 QEMU tests found unsupported optional algorithms and a backend limitation where OAEP with SHA-3 MGF1 returned `BAD_PARAMETERS`. A selectable option, successful compilation, or standalone capability query does not establish successful execution. Check each command's result code and output.
+The existing OP-TEE 4.10.0 QEMU environment includes earlier cryptographic backend fixes. The latest 312 runtime cases produced 230 successes, 82 unsupported results, and no unexpected failures. These results apply to the tested configurations and do not describe an unmodified upstream release. A selectable option, successful compilation, or standalone capability query does not establish successful execution. Check each command's result code and output.
 
 Generated code follows the three GP documents above. OP-TEE is the build and validation environment, not the limit of the standard feature set. Do not substitute vendor algorithms or remove standard GP choices solely because a particular OP-TEE version lacks support. Porting to another TEE requires adapting build integration, property packaging, and signing.
 
@@ -157,10 +169,12 @@ and 4096 returned bytes; these are project limits, not GP limits.
 The tested OP-TEE 4.10.0 backend does not support every offered option. Examples
 include Ed448/X448, GP HKDF, SM4 PKCS5 modes, Brainpool curves and several
 SHA-3 signature combinations. Optional storage and login modes depend on the
-target. The tested OP-TEE 4.10.0 backend also had faults in SM2 key exchange,
-HMAC-SM3 long-key handling and some SM2 verification cases. Binary version
-property queries and empty-plaintext SM2 encryption failed in the test setup.
-The generator does not fix or update the target backend; check the target's
-implementation before using these features.
+target. Earlier tests also encountered OAEP SHA-3 MGF1 parameter errors,
+SM2 key exchange faults, HMAC-SM3 long-key handling faults, and some SM2
+verification failures. Binary version property queries and empty-plaintext
+SM2 encryption failed in that setup. Do not assume these issues occur in every
+OP-TEE version or equate a fixed test environment with an unmodified upstream
+release. The generator does not fix or update the target backend; check the
+target implementation before using these features.
 
 For key size, omit `keyBits` to use the selected algorithm's default or supply a valid positive bit count. The GUI displays the actual default size. Old configurations using the `"0"` default marker are normalized when loaded.

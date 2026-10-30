@@ -1,0 +1,15 @@
+{
+  "FormatVersion": 1,
+  "Name": "demo",
+  "Uuid": "a62125b7-382e-4646-b215-0997da4e71b7",
+  "Version": "1.0.0",
+  "CaOutput": "executable",
+  "Features": [
+    {
+      "Kind": "digest",
+      "Algorithm": "TEE_ALG_SHA256",
+      "Options": { "message": "616263" }
+    },
+    { "Kind": "random", "Options": {} }
+  ]
+}

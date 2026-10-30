@@ -14,8 +14,8 @@ internal static class CSourceFormat
 
     private static string Run(string source)
     {
-        string directory = Path.Combine(AppContext.BaseDirectory, "formatter");
-        var settings = new ProcessStartInfo(Path.Combine(directory, "clang-format.exe"))
+        string directory = BundledFiles.FormatterDirectory;
+        var settings = new ProcessStartInfo(Path.Combine(directory, OperatingSystem.IsWindows() ? "clang-format.exe" : "clang-format"))
         {
             UseShellExecute = false,
             CreateNoWindow = true,

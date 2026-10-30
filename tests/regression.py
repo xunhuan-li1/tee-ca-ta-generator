@@ -12,6 +12,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--exe',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--skip-ui',action='store_true',help='Run the shared generator checks without opening the Windows interface')
     args=p.parse_args()
     output=args.output.resolve()
     output.mkdir(parents=True,exist_ok=False)
@@ -139,9 +140,10 @@ def main():
     # Fixed protocol carries only CA inputs; private input values never enter TA sources.
     values=catalog['PublicExampleKeys']['rsa2048']
     assert values['rsaD'] not in (output/'manual/ta/ta_support.c').read_text()
-    invoke('--self-test-ui',output/'ui.json')
+    if not args.skip_ui:
+        invoke('--self-test-ui',output/'ui.json')
     summary={'Passed':True,'ValidationCases':case,'CurrentAlgorithms':103,'Aliases':sum(a['Legacy'] for a in catalog['Algorithms']),'ApiCalls':len(catalog['Apis']),
-             'AutomaticFeatures':len(automatic['Features']),'ManualFeatures':len(manual['Features']),'Ui':json.loads((output/'ui.json').read_text())}
+             'AutomaticFeatures':len(automatic['Features']),'ManualFeatures':len(manual['Features']),'Ui':None if args.skip_ui else json.loads((output/'ui.json').read_text())}
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps(summary,indent=2))
 
