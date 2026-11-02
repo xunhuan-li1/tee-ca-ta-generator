@@ -49,6 +49,7 @@ TEE_Result gp_sm2_za(TEE_ObjectHandle key, const uint8_t *identity,
     TEE_DigestUpdate(operation, identity, identity_size);
     TEE_DigestUpdate(operation, curve_parameters, sizeof(curve_parameters));
     result = TEE_DigestDoFinal(operation, coordinates, sizeof(coordinates), output, &output_size);
+cleanup:
     TEE_FreeOperation(operation);
     TEE_MemFill(coordinates, 0, sizeof(coordinates));
     if (result != TEE_SUCCESS)

@@ -6,6 +6,8 @@ public static class Scenarios
     private static Option Number(string key, string zh, string en, string value) => new(key, zh, en, value, null, "number");
     private static Option Choice(string key, string zh, string en, string value, params string[] choices) => new(key, zh, en, value, choices);
     public static readonly Option[] Crypto = [
+        Choice("frodoPrg", "FrodoKEM 伪随机生成器", "FrodoKEM PRG", "TEE_ALG_SHAKE128", "TEE_ALG_SHAKE128", "TEE_ALG_SHAKE256", "TEE_ALG_AES_ECB_NOPAD"),
+        Choice("frodoEphemeral", "FrodoKEM 临时密钥", "Ephemeral FrodoKEM key", "false", "false", "true"),
         Hex("message", "输入消息（十六进制）", "Message (hex)", "616263"),
         Choice("keySource", "密钥来源", "Key source", "generate", "generate", "input"),
         Number("keyBits", "密钥位数", "Key size (bits)", ""),
@@ -53,7 +55,7 @@ public static class Scenarios
         Number("saltLength", "RSA PSS 盐长度（-1 为摘要长度）", "RSA PSS salt length (-1 = digest length)", "-1"),
         Hex("salt", "HKDF salt", "HKDF salt", "000102030405060708090a0b0c"),
         Hex("info", "HKDF info", "HKDF info", "f0f1f2f3f4f5f6f7f8f9"),
-        Choice("hash", "HKDF 摘要（GP 1.3.1）", "HKDF hash (GP 1.3.1)", "TEE_ALG_SHA256", "TEE_ALG_SHA256")
+        Choice("hash", "HKDF 摘要", "HKDF hash", "TEE_ALG_SHA256", "TEE_ALG_SHA256")
     ];
     private static Scenario S(string id, string zh, string en, string group, string description, string english, params Option[] fields) => new(id, zh, en, group, description, english, fields);
     public static readonly Scenario[] All = [
@@ -64,6 +66,10 @@ public static class Scenarios
         S("encrypt", "公钥加解密", "Public-key encryption", "Crypto", "RSA / SM2 加解密，返回密文。", "RSA / SM2 encryption and decryption; return ciphertext.", Crypto),
         S("sign", "签名与验签", "Sign and verify", "Crypto", "RSA、DSA、ECDSA、EdDSA 和 SM2 签名流程。", "RSA, DSA, ECDSA, EdDSA and SM2 signatures.", Crypto),
         S("derive", "密钥协商与派生", "Key agreement and derivation", "Crypto", "DH、ECDH、X25519/X448、SM2 密钥交换和 HKDF。", "DH, ECDH, X25519/X448, SM2 key exchange and HKDF.", Crypto),
+        S("kem", "密钥封装与解封装", "Key encapsulation", "Crypto", "生成非对称密钥、封装并解封装 AES 会话密钥；返回封装数据。", "Generate a key pair, encapsulate and decapsulate an AES session key; return encapsulated data.", Crypto),
+        S("remote_session", "调用远程 TEE 中的 TA", "Remote TA session", "Communication", "按远程 TEE 名称和 UUID 建立会话并调用命令。", "Open a session in a named remote TEE and invoke a command.",
+            new("remoteTee", "远程 TEE 名称", "Remote TEE name", "remote.tee"),
+            new("targetUuid", "目标 UUID", "Target UUID", ""), Number("command", "目标命令号", "Target command", "0")),
         S("random", "随机数", "Random bytes", "Core", "在 TA 私有内存生成随机字节后返回。", "Generate random bytes in TA private memory.", Number("bytes", "字节数", "Byte count", "32")),
         S("property", "读取属性", "Read property", "Core", "按名称和类型读取标准或自定义属性。", "Read a named property with its declared type.",
             Choice("set", "属性集", "Property set", "current_ta", "current_ta", "current_client", "implementation"),
@@ -82,8 +88,6 @@ public static class Scenarios
         S("time", "时间与等待", "Time and wait", "Core", "读取 TEE/REE 时间并进行有限等待。", "Read TEE/REE time and perform a bounded wait.", Number("waitMs", "等待毫秒", "Wait milliseconds", "10")),
         S("persistent_time", "TA 持久时间", "TA persistent time", "Core", "设置并读取当前 TA 的持久时间。", "Set and read this TA's persistent time.", Number("seconds", "秒数", "Seconds", "1")),
         S("memory", "内存管理", "Memory management", "Core", "分配、调整大小、检查访问权限、复制、比较与释放。", "Allocate, resize, check access, copy, compare and release memory."),
-        S("bigint", "大整数算术", "Big integer arithmetic", "Arithmetic", "转换、位操作、算术、模运算、扩展 GCD 与素性检查。", "Conversions, bits, arithmetic, modular operations, extended GCD and primality."),
-        S("fmm", "快速模乘", "Fast modular multiplication", "Arithmetic", "初始化上下文，转换、模乘和还原。", "Initialize a context, convert, multiply and convert back."),
         S("session", "TA 调用 TA", "TA-to-TA session", "Communication", "调用已有的目标 TA；目标参数类型默认全部为 NONE。", "Call an existing TA with no command parameters by default.",
             new("targetUuid", "目标 UUID", "Target UUID", ""), Number("command", "目标命令号", "Target command", "0")),
         S("cancellation", "取消与等待", "Cancellation and wait", "Communication", "掩蔽、解除掩蔽、读取取消状态并等待。", "Mask, unmask, inspect cancellation and wait.", Number("waitMs", "等待毫秒", "Wait milliseconds", "100")),
@@ -108,6 +112,8 @@ public static class Scenarios
             _ => "TEE_ECC_CURVE_NIST_P256"
         };
         if (key == "message" && (algorithm?.Family == "cipher" || algorithm?.Family == "mac" && algorithm.Id.EndsWith("NOPAD"))) return "00112233445566778899aabbccddeeff" + "00112233445566778899aabbccddeeff";
+        if (key == "iv" && algorithm?.Id == "TEE_ALG_CHACHA20") return "000102030405060708090a0b";
+        if (key == "key" && algorithm?.Id == "TEE_ALG_CHACHA20") return "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f";
         if (key == "iv" && algorithm?.Family == "ae") return "000102030405060708090a0b";
         if (key == "iv" && algorithm?.BlockSize == 8) return "0001020304050607";
         if (algorithm?.Id.Contains("SM2") == true && key is "publicX" or "publicY" or "ephemeralX" or "ephemeralY") {

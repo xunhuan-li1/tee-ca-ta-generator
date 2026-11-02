@@ -27,8 +27,8 @@ public static class CommandLine
             {
                 Data.Save(report, new
                 {
-                    SchemaVersion = 1, Success = true, GeneratorVersion = "1.0.0",
-                    Documents = Data.Catalog.Sources, Excluded = new[] { "Core chapter 9: Peripheral and Event APIs", "Diagnostics: TEE_Panic", "Deprecated compatibility APIs and algorithm aliases" },
+                    SchemaVersion = 1, Success = true, GeneratorVersion = "1.4.0",
+                    Documents = Data.Catalog.Sources, Excluded = new[] { "Core chapter 9: Peripheral and Event APIs", "Diagnostics: TEE_Panic", "Deprecated compatibility APIs and algorithm aliases", "Core 1.4 deprecated big-integer arithmetic" },
                     RequiredFields = new[] { "FormatVersion", "Name", "Uuid", "Features" },
                     PublicExampleKeys = ExampleInputs.Keys,
                     ProjectDefaults = new Project { Uuid = "REPLACE-WITH-NEW-UUID" },
@@ -38,6 +38,9 @@ public static class CommandLine
                     Rules = new[] { "Feature.Kind selects a scenario. Feature.Algorithm selects a matching family.",
                         "Feature.Options values are strings; unknown fields and choices are rejected.",
                         "Version is a nonempty string without control characters, for example 1.0.1; legacy uint32 values are also accepted.",
+                        "PanicSafe enables TEE_MaskPanics and checked _PS calls.",
+                        "Algorithms with a nonempty Limitation support capability queries only.",
+                        "PQC examples generate fresh keys inside the TA; imported-key encodings are not inferred.",
                         "Defaults depend on the selected algorithm. Validate before generation.",
                         "Algorithm declarations are separate from target runtime support.",
                         "Generation does not compile, deploy or run the project." }

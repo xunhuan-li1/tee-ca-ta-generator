@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     TEE_Time system_time;
     TEE_Time ree_time;

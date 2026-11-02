@@ -83,7 +83,7 @@ public sealed partial class MainWindow : Window
             Render(); };
         actions.Children.Add(language); DockPanel.SetDock(actions, Dock.Right); header.Children.Add(actions);
         var brand = new StackPanel(); brand.Children.Add(Heading(T("CA / TA 工程生成器", "CA / TA Project Generator"), 25));
-        brand.Children.Add(Text(T("定义目标，选择能力，生成可编译工程   ·   GP Core 1.3.1", "Define a project, choose capabilities, generate buildable code   ·   GP Core 1.3.1"), 12, Muted));
+        brand.Children.Add(Text(T("定义目标，选择能力，生成可编译工程   ·   GP Core 1.4", "Define a project, choose capabilities, generate buildable code   ·   GP Core 1.4"), 12, Muted));
         header.Children.Add(brand); DockPanel.SetDock(header, Dock.Top); root.Children.Add(header);
         var footer = new DockPanel { Margin = new Thickness(0, 10, 0, 0) };
         navigation = new WrapPanel(); DockPanel.SetDock(navigation, Dock.Right); footer.Children.Add(navigation);
@@ -122,7 +122,7 @@ public sealed partial class MainWindow : Window
     {
         var page = new StackPanel { Margin = new Thickness(4, 12, 4, 0) };
         var intro = new StackPanel(); intro.Children.Add(Heading(T("程序介绍", "Program overview"), 18));
-        intro.Children.Add(Text(T("覆盖 TEE Internal Core API v1.3.1、TEE Client API v1.0 及 Errata and Precisions v2.0，生成 OP-TEE CA / TA 工程。", "Generate OP-TEE CA / TA projects for TEE Internal Core API v1.3.1, TEE Client API v1.0 and Errata and Precisions v2.0."), 13, Muted));
+        intro.Children.Add(Text(T("覆盖 TEE Internal Core API v1.4、TEE Client API v1.0 及 Errata and Precisions v2.0，生成 OP-TEE CA / TA 工程。", "Generate OP-TEE CA / TA projects for TEE Internal Core API v1.4, TEE Client API v1.0 and Errata and Precisions v2.0."), 13, Muted));
         intro.Children.Add(Text(T("定义工程 → 选择功能与参数 → 检查并导出代码", "Define project → Choose features and parameters → Review and export code"), 12));
         page.Children.Add(Card(intro, 18));
         var grid = new Grid { Margin = new Thickness(0, 12, 0, 0) };
@@ -182,6 +182,8 @@ public sealed partial class MainWindow : Window
         instanceOptions.Children.Add(Text(T(
             "持久化 TA：全部会话关闭后保留实例，启用时自动勾选单实例。多会话仅在单实例模式下生效。",
             "Keep-alive retains the instance after all sessions close and enables single-instance mode. Multiple sessions applies to single-instance mode."), 12, Muted));
+        Check(T("返回可恢复的 panic 错误", "Return recoverable panic errors"), project.PanicSafe,
+            v => { project.PanicSafe = v; Changed(); }, instanceOptions);
         Check(T("会话上下文（保存每个会话的调用次数）", "Session context (per-session call count)"), project.SessionContext,
             v => { project.SessionContext = v; Changed(); }, instanceOptions);
         var instanceCard = Card(instanceOptions, 12);
@@ -221,18 +223,18 @@ public sealed partial class MainWindow : Window
     {
         if (!ConfirmSave()) return;
         project = new(); projectFile = ""; outputDirectory = ""; savedSnapshot = State; selectedPage = 0;
-        activeFeature = null; drafts.Clear(); history.Clear(); preview = null; Render();
+        activeFeature = null; drafts.Clear(); dataModes.Clear(); history.Clear(); preview = null; Render();
     }
     private void OpenProject()
     {
         var dialog = new OpenFileDialog { Filter = "Project configuration (*.json)|*.json" };
         if (dialog.ShowDialog(this) != true) return;
         Project value = Data.Read(dialog.FileName);
-        if (value.Features == null || value.Features.Count > 256) throw new ArgumentException("Invalid feature list.");
+        Generator.Validate(value);
         foreach (var f in value.Features) { Scenarios.Get(f.Kind); Scenarios.Algorithm(f); Workflows.For(f); }
         if (!ConfirmSave()) return;
         project = value; projectFile = dialog.FileName; savedSnapshot = State; preview = null;
-        drafts.Clear(); history.Clear(); activeFeature = null; Render();
+        drafts.Clear(); dataModes.Clear(); history.Clear(); activeFeature = null; Render();
     }
     private bool SaveProject(bool saveAs)
     {

@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     TEE_ObjectHandle key = TEE_HANDLE_NULL;
     TEE_OperationHandle encrypt = TEE_HANDLE_NULL;
@@ -13,7 +13,7 @@ TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *resp
     const struct gp_attribute *label = gp_attribute(request, 10, TEE_ATTR_RSA_OAEP_LABEL);
     uint8_t *plain = NULL;
     const uint8_t *decoded = NULL;
-    uint8_t padded[512] = { 0 };
+    uint8_t padded[1024] = { 0 };
     const uint8_t *input = request->data;
     size_t input_size = request->data_size;
     size_t output_size = sizeof(response->data);

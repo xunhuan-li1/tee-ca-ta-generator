@@ -76,7 +76,7 @@ public sealed partial class MainWindow
     {
         var panel = new StackPanel();
         panel.Children.Add(Heading(T("规范范围", "Specification coverage")));
-        panel.Children.Add(Text(T("提供 Core 1.3.1（不含第九章、诊断和兼容接口）、Client 1.0 及其 Errata 2.0 的接口调用示例。当前目录包含 103 个算法标识符。示例、编译通过和设备运行支持是不同层面的结果。", "Examples cover Core 1.3.1 excluding chapter 9, diagnostics and compatibility APIs, Client 1.0 and Errata 2.0. The catalog contains 103 algorithm identifiers. Generated examples, successful builds and device runtime support are distinct results."), 14, Muted));
+        panel.Children.Add(Text(T("提供 Core 1.4（不含第九章、诊断和兼容接口）、Client 1.0 及其 Errata 2.0 的接口调用示例。当前目录包含 122 个算法标识符（部分仅提供能力查询）。示例、编译通过和设备运行支持是不同层面的结果。", "Examples cover Core 1.4 excluding chapter 9, diagnostics and compatibility APIs, Client 1.0 and Errata 2.0. The catalog contains 122 algorithm identifiers (some are query-only). Generated examples, successful builds and device runtime support are distinct results."), 14, Muted));
         foreach (var item in Data.Catalog.Sources) panel.Children.Add(Text(item.Key + ": " + item.Value, 12, Muted));
         panel.Children.Add(Heading(T("接口索引", "API index"), 18));
         foreach (var group in Data.Catalog.Apis.GroupBy(a => a.Group))

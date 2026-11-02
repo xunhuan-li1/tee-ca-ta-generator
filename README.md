@@ -1,5 +1,7 @@
 # GP Project Generator
 
+**GP1.4 branch — Windows first.** The Windows EXE targets Core 1.4. The retained Linux executable is still the GP1.3.1 release; use the [GP1.3.1 branch](https://github.com/xunhuan-li1/tee-ca-ta-generator/tree/GP1.3.1) for that version.
+
 A CA / TA project generator for Windows and Linux. Select features and enter parameters to generate the corresponding source code and build configuration.
 
 - **CA**: A client application running in the normal operating system that sends requests to a TA.
@@ -11,22 +13,29 @@ The Windows version provides a graphical interface that defaults to English and 
 
 The generated code is based on the following GlobalPlatform documents:
 
-1. **TEE Internal Core API Specification v1.3.1**: Internal TA interfaces.
+1. **TEE Internal Core API Specification v1.4**, Public Release, November 2025: Internal TA interfaces.
 2. **TEE Client API Specification v1.0**: CA client interfaces.
 3. **TEE Client API v1.0 Errata and Precisions v2.0**: Corrections and clarifications for the client interfaces.
 
-Peripheral and event APIs (Core Chapter 9), diagnostic examples, and deprecated compatibility APIs are excluded.
+Peripheral and event APIs (Core Chapter 9), diagnostic examples, deprecated compatibility APIs and deprecated big-integer arithmetic are excluded.
 
 The following features can be generated:
 
 - Digest, encryption/decryption, MAC, signing and verification, key agreement, and key derivation examples, including algorithms such as AES, RSA, SM2, SM3, and SM4.
-- Property queries, secure storage, random numbers, time, memory, big integers, and session communication examples.
+- Property queries, secure storage, random numbers, time, memory, and local or remote TA session examples.
+- Core 1.4 CBC padding algorithms, ChaCha20, 192-bit digests, post-quantum signatures and key encapsulation. The optional panic-error setting enables `TEE_MaskPanics` and checked `_PS` calls; derivation always uses `TEE_DeriveKey_PS` because the old function is deprecated.
 - Keys generated in the TA or supplied by the CA, with algorithm-specific settings such as IVs, messages, and authentication tag lengths.
 - A CA configured as an executable, shared library, or static library, or a TA-only project.
 
 The Windows utilities page also provides SM2 ZA and pre-signature digest calculation, certificate viewing and conversion, public key extraction, and fingerprint calculation.
 
-Whether features can run on a device depends on the target TEE's implementation and configuration. Validation has passed in an OP-TEE 4.10.0 environment.
+Existing interfaces are checked in OP-TEE 4.10.0 QEMU. Core 1.4 calls missing from its SDK receive formal-declaration and syntax checks only, not runtime validation.
+
+### Current 1.4 limits
+
+The catalog contains 122 algorithm identifiers. Seven are **query-only**: ChaCha20-Poly1305, Poly1305, SLH-DSA, LM-OTS, XMSS, XMSSMT and WOTS. The formal publication contains missing or inconsistent key-type or parameter definitions; the generator does not invent replacements. `--describe` lists each reason in `Limitation`. ECIES encapsulation is not generated because its algorithm identifier is not assigned in the publication.
+
+ML-DSA, FALCON, LMS, ML-KEM, FrodoKEM and NTRU examples generate keys inside the TA. PQC key import awaits clarification of attribute encodings. LMS uses a fresh key for one signature with the RFC 8554 SHA-256 H5/W8 parameter sets; it does not implement persistent state management. DH examples return a generic secret of at most 4096 bits.
 
 ## Quick Start
 

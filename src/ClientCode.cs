@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 using System.Text;
 namespace GpStudio;
 
@@ -14,7 +14,7 @@ internal static class ClientCode
         for (int i = 0; i < request.Attributes.Count; i++)
         {
             var a = request.Attributes[i]; string name = a.Id.Replace("TEE_ATTR_", "").ToLowerInvariant() + "_" + a.Group;
-            fields.Add(new(name, a.Bytes, $"attributes[{i}].data", $"attributes[{i}].size", 512, a));
+            fields.Add(new(name, a.Bytes, $"attributes[{i}].data", $"attributes[{i}].size", 1024, a));
         }
         return fields;
     }

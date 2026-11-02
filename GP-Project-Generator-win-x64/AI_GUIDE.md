@@ -1,5 +1,19 @@
 # GP Project Generator — AI Guide
 
+**GP1.4 / Windows:** The Windows EXE in this branch targets the November 2025 Core 1.4 Public Release, Client 1.0 and Errata 2.0. The retained Linux binary and its separate guide still belong to GP1.3.1; do not use that binary to validate 1.4 configurations.
+
+## Core 1.4 configuration
+
+- `PanicSafe: true` enables `TEE_MaskPanics(true)` and checks the 11 `_PS` variants. It defaults to false. Derivation always uses `TEE_DeriveKey_PS` because the old void function is deprecated.
+- `Kind: "kem"`: ML-KEM (`keyBits`: 512/768/1024), FrodoKEM (640/976/1344), NTRU (509/677/701/821). Frodo options are `frodoPrg` and `frodoEphemeral`; inspect their choices in the catalog. The example returns encapsulated data and compares the AES session keys inside the TA without returning secret bytes.
+- `Kind: "sign"`: ML-DSA (44/65/87), FALCON (512/1024), LMS (0). These numbers select parameter sets. LMS uses SHA-256 H5/W8 and generates a fresh key for one signature.
+- These PQC examples accept `keySource: "generate"` only. Do not fabricate import attributes; the formal publication's binary/value encodings need clarification.
+- `Kind: "remote_session"`: `remoteTee`, `targetUuid` and `command` identify a separately deployed TA. Adapt the empty parameter list if its command protocol requires parameters.
+- A nonempty algorithm `Limitation` means **query-only**: use `Kind: "algorithm_support"`. ECIES encapsulation has no assigned algorithm identifier in the publication and is not generated.
+- Do not substitute success stubs, guessed constants or vendor extensions to claim a passing test.
+- RSA adds 6144/7680/8192-bit keys. GCM tags are 96/104/112/120/128 bits. ChaCha20 uses a 256-bit key and an 8- or 12-byte nonce. SHA256_192 and SHAKE256_192 return 24 bytes.
+- Big-integer arithmetic is deprecated in Core 1.4 and removed, alongside chapter 9, diagnostics and compatibility APIs.
+
 Use this guide to turn a user request into a CA/TA project. You need local file access and permission to run `GP-Project-Generator.exe` on Windows or `./gp-project-generator` on Linux. The published packages run without Python or a .NET SDK. Compiling the generated project requires a separate OP-TEE development environment.
 
 The UI starts in English. Users can switch to Chinese from the language dropdown for the current session.
@@ -133,7 +147,7 @@ The GUI export location is a parent directory; duplicate project names receive s
 
 ## Scope and additional parameters
 
-The generator targets GP Internal Core API 1.3.1, Client API 1.0, and Client API Errata and Precisions 2.0. It excludes diagnostics (`TEE_Panic`), deprecated compatibility APIs, compatibility algorithm aliases, and all of Core chapter 9, Peripheral and Event APIs. Use only the options returned by `--describe`.
+The generator targets GP Internal Core API 1.4, Client API 1.0, and Client API Errata and Precisions 2.0. It excludes diagnostics (`TEE_Panic`), deprecated compatibility APIs, compatibility algorithm aliases, and all of Core chapter 9, Peripheral and Event APIs. Use only the options returned by `--describe`.
 
 - RSA OAEP `mgfHash` accepts `same` (the OAEP digest) or a listed digest; `label` is hexadecimal.
 - Imported RSA keys with `rsaCrt=true` require `rsaP/rsaQ/rsaDp/rsaDq/rsaQinv`, as well as n/e/d.
@@ -146,7 +160,7 @@ Do not add company-specific interfaces or present OP-TEE extensions outside this
 
 Without an explicit ECDSA curve, SHA1/SHA224/SHA256/SHA384/SHA512 use P192/P224/P256/P384/P521 respectively. An explicitly selected curve is preserved. A target may restrict digest/curve combinations.
 
-The existing OP-TEE 4.10.0 QEMU environment includes earlier cryptographic backend fixes. The latest 312 runtime cases produced 230 successes, 82 unsupported results, and no unexpected failures. These results apply to the tested configurations and do not describe an unmodified upstream release. A selectable option, successful compilation, or standalone capability query does not establish successful execution. Check each command's result code and output.
+The existing OP-TEE 4.10.0 QEMU environment includes earlier cryptographic backend fixes. Existing interfaces are tested there. Core 1.4 calls absent from its SDK receive declaration and syntax checks only, not runtime validation. A selectable option or successful capability query does not establish successful execution. Check each command's result code and output.
 
 Generated code follows the three GP documents above. OP-TEE is the build and validation environment, not the limit of the standard feature set. Do not substitute vendor algorithms or remove standard GP choices solely because a particular OP-TEE version lacks support. Porting to another TEE requires adapting build integration, property packaging, and signing.
 
@@ -163,8 +177,9 @@ Known scope limits: no configurable DH private-key bit count, no SM2 key
 exchange confirmation flow, no persistent-key workflow, and no separate
 public-key-only encryption or external-signature verification workflow.
 OpenSession uses no operation parameters; adapt TA-to-TA calls to the target
-protocol. Example capacities are 2048 message bytes, 512 bytes per attribute
-and 4096 returned bytes; these are project limits, not GP limits.
+protocol. Example capacities are 2048 message bytes, 1024 bytes per attribute
+and 4096 returned bytes (32768 in projects containing PQC examples); these
+are project limits, not GP limits.
 
 The tested OP-TEE 4.10.0 backend does not support every offered option. Examples
 include Ed448/X448, GP HKDF, SM4 PKCS5 modes, Brainpool curves and several
@@ -177,4 +192,4 @@ OP-TEE version or equate a fixed test environment with an unmodified upstream
 release. The generator does not fix or update the target backend; check the
 target implementation before using these features.
 
-For key size, omit `keyBits` to use the selected algorithm's default or supply a valid positive bit count. The GUI displays the actual default size. Old configurations using the `"0"` default marker are normalized when loaded.
+For LMS, keyBits=0 selects the GP parameter-set convention and is hidden in the GUI. For other key sizes, omit `keyBits` to use the selected algorithm's default or supply a valid positive bit count. The GUI displays the actual default size. Old configurations using the `"0"` default marker are normalized when loaded.

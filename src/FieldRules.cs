@@ -6,15 +6,22 @@ public static class FieldRules
     {
         Algorithm? algorithm = Scenarios.Algorithm(feature);
         if (field.Key == "tagBits")
-            return algorithm?.Id == "TEE_ALG_AES_CCM" ? ["32", "48", "64", "80", "96", "112", "128"] : ["32", "64", "96", "104", "112", "120", "128"];
+            return algorithm?.Id == "TEE_ALG_AES_CCM" ? ["32", "48", "64", "80", "96", "112", "128"] : ["96", "104", "112", "120", "128"];
         if (field.Key == "keyBits")
             return algorithm?.KeyType switch
             {
                 "TEE_TYPE_AES" => algorithm.Id == "TEE_ALG_AES_XTS" ? ["128", "256"] : ["128", "192", "256"],
+                "TEE_TYPE_MLDSA_KEYPAIR" => ["44", "65", "87"],
+                "TEE_TYPE_FALCON_KEYPAIR" => ["512", "1024"],
+                "TEE_TYPE_MLKEM_KEYPAIR" => ["512", "768", "1024"],
+                "TEE_TYPE_FRODOKEM_KEYPAIR" => ["640", "976", "1344"],
+                "TEE_TYPE_NTRU_KEYPAIR" => ["509", "677", "701", "821"],
+                "TEE_TYPE_LMS_KEYPAIR" => ["0"],
+                "TEE_TYPE_CHACHA20" => ["256"],
                 "TEE_TYPE_SM4" => ["128"],
                 "TEE_TYPE_DES" => ["64"],
                 "TEE_TYPE_DES3" => ["128", "192"],
-                "TEE_TYPE_RSA_KEYPAIR" => ["256", "512", "768", "1024", "1536", "2048", "3072", "4096"],
+                "TEE_TYPE_RSA_KEYPAIR" => ["256", "512", "768", "1024", "1536", "2048", "3072", "4096", "6144", "7680", "8192"],
                 "TEE_TYPE_DSA_KEYPAIR" when algorithm.Digest == "TEE_ALG_SHA224" => ["2048"],
                 "TEE_TYPE_DSA_KEYPAIR" when algorithm.Digest != "TEE_ALG_SHA1" => ["2048", "3072"],
                 _ => field.Choices
@@ -38,6 +45,12 @@ public static class FieldRules
         }
         Algorithm? a = Scenarios.Algorithm(feature);
         if (a == null || feature.Kind == "algorithm_support") return true;
+        if (Core14.IsPqc(a)) return key switch {
+            "message" => a.Family == "sign",
+            "keyBits" => a.Id != "TEE_ALG_LMS",
+            "frodoPrg" or "frodoEphemeral" => a.Id == "TEE_ALG_FRODOKEM",
+            _ => false
+        };
         string family = a.Family;
         string id = a.Id;
         string type = a.KeyType;
@@ -62,7 +75,7 @@ public static class FieldRules
             "curve" => ecc,
             "streaming" => family is "digest" or "cipher" or "mac" or "ae",
             "copyReuse" => family == "digest",
-            "outputBytes" => id.Contains("SHAKE") || id is "TEE_ALG_HKDF" or "TEE_ALG_SM2_KEP",
+            "outputBytes" => id is "TEE_ALG_SHAKE128" or "TEE_ALG_SHAKE256" || id is "TEE_ALG_HKDF" or "TEE_ALG_SM2_KEP",
             "private" or "publicX" => input && !secret && !rsa,
             "publicY" => input && (ecc || sm2),
             "rsaN" or "rsaD" => rsa && input,

@@ -23,7 +23,7 @@ def main():
     catalog_path=output/'catalog.json'
     invoke('--describe',catalog_path)
     catalog=json.loads(catalog_path.read_text())
-    assert len([a for a in catalog['Algorithms'] if not a['Legacy']])==103
+    assert len([a for a in catalog['Algorithms'] if not a['Legacy']])==122
     assert not any(a['Legacy'] for a in catalog['Algorithms'])
     assert not any(a['Deprecated'] or a['Name']=='TEE_Panic' for a in catalog['Apis'])
     assert not {'panic','legacy'} & {s['Id'] for s in catalog['Scenarios']}
@@ -68,6 +68,35 @@ def main():
     invalid(lambda x:x['Features'][0].update(Algorithm='TEE_ALG_ECDSA_P256'))
     invalid(lambda x:x.update(Features=[{'Kind':'encrypt','Algorithm':'TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA256','Options':{'mgfHash':'TEE_ALG_MD5'}}]))
     invalid(lambda x:x['Features'][0]['Options'].update(copyReuse='invalid'))
+    # Reject malformed user/AI input with field errors, not internal exceptions.
+    for field in ('Name', 'Description', 'Uuid', 'Features'):
+        invalid(lambda x, key=field: x.update({key: None}))
+    for field in ('Kind', 'Scenario', 'Algorithm', 'Options'):
+        invalid(lambda x, key=field: x['Features'][0].update({key: None}))
+    invalid(lambda x: x.update(Features=[None]))
+    invalid(lambda x: x['Features'][0]['Options'].update(message=None))
+    for root in (None, [], 42, 'project'):
+        validate(root, False)
+    for report_path in output.glob('case-*-report.json'):
+        report=json.loads(report_path.read_text())
+        assert report.get('ErrorType') not in ('NullReferenceException', 'InvalidOperationException'), report
+    hidden=copy.deepcopy(base)
+    hidden['Features'][0]['Options'].update(keySource='input', aad='unfinished')
+    validate(hidden)
+    # JSON/UI integers are decimal even when users type a leading zero or sign.
+    numeric=copy.deepcopy(base)
+    numeric['Features']=[
+        {'Kind':'time','Options':{'waitMs':' 0008 '}},
+        {'Kind':'persistent_time','Options':{'seconds':'+0009'}},
+        {'Kind':'storage','Options':{'action':'read','offset':'0008','size':'0010'}},
+        {'Kind':'session','Options':{'targetUuid':str(uuid.uuid4()),'command':'0009'}},
+        {'Kind':'sign','Algorithm':'TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA256','Options':{'saltLength':'-01'}},
+    ]
+    numeric_path=output/'numeric.json';numeric_path.write_text(json.dumps(numeric))
+    invoke('--generate',numeric_path,output/'numeric',output/'numeric-report.json')
+    numeric_sources='\n'.join(path.read_text() for path in (output/'numeric/ta/examples').glob('*.c'))
+    for definition in ('GP_WAIT_MS 8', 'GP_SECONDS 9', 'GP_OFFSET 8', 'GP_SIZE 10', 'GP_TARGET_COMMAND 9', 'GP_SALT_LENGTH 32'):
+        assert '#define '+definition in numeric_sources, definition
     digest_matrix=copy.deepcopy(base); digest_matrix['Features']=[]
     cases=[]
     for algorithm in (a for a in catalog['Algorithms'] if a['Family']=='digest'):
@@ -86,9 +115,12 @@ def main():
         assert ('TEE_ResetOperation(' in source)==(copy_reuse=='true')
         assert ('TEE_DigestUpdate(operation, request->data, split)' in source)==(streaming=='true')
         assert not re.search(r'@[A-Z_]+@',source)
-    automatic=copy.deepcopy(base); automatic['Features']=[]; automatic['SessionContext']=True; automatic['Version']='1.0.1'
+    automatic=copy.deepcopy(base); automatic['Features']=[]; automatic['SessionContext']=True; automatic['Version']='1.0.1'; automatic['HeapKiB']=2048
     manual=copy.deepcopy(automatic)
     for algorithm in catalog['Algorithms']:
+        if algorithm.get('Limitation'):
+            automatic['Features'].append({'Kind':'algorithm_support','Algorithm':algorithm['Id'],'Options':{}})
+            continue
         feature={'Kind':algorithm['Family'],'Algorithm':algorithm['Id'],'Options':{}}
         if algorithm['Family']=='digest': feature['Options']['copyReuse']='true'
         automatic['Features'].append(feature)
@@ -97,7 +129,8 @@ def main():
         if algorithm['Family'] in ('cipher','ae') and 'ECB' not in algorithm['Id']:
             imported['Options']['ivSource']='input'
         if algorithm['Family'] in ('digest','cipher','mac','ae'): imported['Options']['streaming']='true'
-        manual['Features'].append(imported)
+        if algorithm['KeyType'] not in ('TEE_TYPE_MLDSA_KEYPAIR','TEE_TYPE_FALCON_KEYPAIR','TEE_TYPE_LMS_KEYPAIR','TEE_TYPE_MLKEM_KEYPAIR','TEE_TYPE_FRODOKEM_KEYPAIR','TEE_TYPE_NTRU_KEYPAIR'):
+            manual['Features'].append(imported)
     for curve in catalog['Curves']:
         if not curve['Generic']: continue
         for family,algorithm in [('sign','TEE_ALG_ECDSA_SHA256'),('derive','TEE_ALG_ECDH_DERIVE_SHARED_SECRET')]:
@@ -105,7 +138,7 @@ def main():
     for scenario in catalog['Scenarios']:
         if scenario['Category']=='Crypto': continue
         feature={'Kind':scenario['Id'],'Options':{}}
-        if scenario['Id']=='session': feature['Options']['targetUuid']=str(uuid.uuid4())
+        if scenario['Id'] in ('session','remote_session'): feature['Options']['targetUuid']=str(uuid.uuid4())
         if scenario['Id']=='algorithm_support': feature['Algorithm']='TEE_ALG_SHA256'
         automatic['Features'].append(feature)
     validate(automatic); validate(manual)
@@ -123,6 +156,10 @@ def main():
     assert 'output_size != GP_OUTPUT_BYTES' in kep
     # Every public interface in the inventory has an actual generated call/definition.
     all_c='\n'.join(f.read_text() for f in (output/'automatic').rglob('*') if f.suffix in ('.c','.h'))
+    safe=copy.deepcopy(automatic);safe['PanicSafe']=True
+    safe_path=output/'panic-safe.json';safe_path.write_text(json.dumps(safe))
+    invoke('--generate',safe_path,output/'panic-safe',output/'panic-safe-report.json')
+    all_c+='\n'+'\n'.join(f.read_text() for f in (output/'panic-safe').rglob('*.c'))
     missing=[a['Name'] for a in catalog['Apis'] if not re.search(r'\b'+a['Name']+r'\s*\(',all_c)]
     assert not missing, missing
     path=output/'automatic.json'
@@ -142,7 +179,7 @@ def main():
     assert values['rsaD'] not in (output/'manual/ta/ta_support.c').read_text()
     if not args.skip_ui:
         invoke('--self-test-ui',output/'ui.json')
-    summary={'Passed':True,'ValidationCases':case,'CurrentAlgorithms':103,'Aliases':sum(a['Legacy'] for a in catalog['Algorithms']),'ApiCalls':len(catalog['Apis']),
+    summary={'Passed':True,'ValidationCases':case,'CurrentAlgorithms':122,'Aliases':sum(a['Legacy'] for a in catalog['Algorithms']),'ApiCalls':len(catalog['Apis']),
              'AutomaticFeatures':len(automatic['Features']),'ManualFeatures':len(manual['Features']),'Ui':None if args.skip_ui else json.loads((output/'ui.json').read_text())}
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps(summary,indent=2))

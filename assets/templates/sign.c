@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     TEE_ObjectHandle key = TEE_HANDLE_NULL;
     TEE_OperationHandle sign = TEE_HANDLE_NULL;

@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     TEE_ObjectHandle key = TEE_HANDLE_NULL;
     TEE_ObjectHandle peer = TEE_HANDLE_NULL;
@@ -10,7 +10,7 @@ TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *resp
     TEE_OperationHandle operation = TEE_HANDLE_NULL;
     TEE_Attribute parameters[6];
     uint32_t count = 0;
-    uint8_t peer_x[512] = { 0 };
+    uint8_t peer_x[1024] = { 0 };
     uint8_t peer_y[80] = { 0 };
     size_t x_size = sizeof(peer_x);
     size_t y_size = sizeof(peer_y);
@@ -57,7 +57,7 @@ TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *resp
     } else {
         const struct gp_attribute *x = gp_attribute(request, 2, GP_PEER_X);
         const struct gp_attribute *y = gp_attribute(request, 2, GP_PEER_Y);
-        if (!x || !x->size || (GP_PEER_Y && (!y || !y->size))) {
+        if (!x || !x->size || x->size > sizeof(peer_x) || (GP_PEER_Y && (!y || !y->size))) {
             result = TEE_ERROR_BAD_PARAMETERS;
             goto cleanup;
         }
@@ -85,7 +85,7 @@ TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *resp
         goto cleanup;
     response->data_size = (uint32_t)output_size;
     if (GP_GENERATE && peer != TEE_HANDLE_NULL) {
-        uint8_t secret[GP_RESULT_BYTES];
+        uint8_t secret[512];
         size_t secret_size = sizeof(secret);
         x_size = sizeof(peer_x);
         y_size = sizeof(peer_y);

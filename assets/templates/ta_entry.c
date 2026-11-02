@@ -5,6 +5,7 @@
 
 TEE_Result TA_CreateEntryPoint(void)
 {
+    @MASK_PANICS@
     uint32_t *instance = TEE_Malloc(sizeof(*instance), TEE_MALLOC_FILL_ZERO);
     if (!instance)
         return TEE_ERROR_OUT_OF_MEMORY;
@@ -36,7 +37,11 @@ void TA_CloseSessionEntryPoint(void *context)
     @SESSION_CLOSE@
 }
 
+#if TEE_CORE_API_MAJOR_VERSION > 1 || TEE_CORE_API_MINOR_VERSION >= 4
+TEE_Result TA_InvokeCommandEntryPoint(const void *context, uint32_t command,
+#else
 TEE_Result TA_InvokeCommandEntryPoint(void *context, uint32_t command,
+#endif
                                       uint32_t types, TEE_Param params[4])
 {
     struct gp_request *request = NULL;

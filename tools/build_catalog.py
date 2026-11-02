@@ -81,6 +81,8 @@ def main():
         'Errata':'https://globalplatform.org/specs-library/tee-client-api-specification-v1-0-errata-and-precisions-v2/',
         'Headers':'https://github.com/OP-TEE/optee_os/tree/4.10.0/lib/libutee/include',
         'ClientHeaders':'https://github.com/OP-TEE/optee_client/tree/4.10.0/libteec/include'})
+    from core14_catalog import upgrade
+    result = upgrade(result)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n',encoding='utf-8')
     print(f'{len(algorithms)} current algorithms, {len(apis)} API functions/macros')

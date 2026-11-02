@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     TEE_ObjectHandle key = TEE_HANDLE_NULL;
     TEE_ObjectHandle key2 = TEE_HANDLE_NULL;
@@ -83,7 +83,8 @@ cleanup:
         TEE_FreeTransientObject(key);
     if (key2 != TEE_HANDLE_NULL)
         TEE_FreeTransientObject(key2);
-    TEE_MemFill(plain, 0, GP_DATA_BYTES + 32);
+    if (plain)
+        TEE_MemFill(plain, 0, GP_DATA_BYTES + 32);
     TEE_Free(plain);
     return result;
 }

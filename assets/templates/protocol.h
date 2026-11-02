@@ -5,12 +5,12 @@
 #include <stdint.h>
 
 #define GP_DEMO_UUID @UUID@
-#define GP_PROTOCOL_VERSION 1u
+#define GP_PROTOCOL_VERSION 2u
 #define GP_MAX_ATTRIBUTES 24u
-#define GP_ATTRIBUTE_BYTES 512u
+#define GP_ATTRIBUTE_BYTES 1024u
 #define GP_DATA_BYTES 2048u
 #define GP_AAD_BYTES 1024u
-#define GP_RESULT_BYTES 4096u
+#define GP_RESULT_BYTES @RESULT_CAPACITY@u
 
 struct gp_attribute {
     uint32_t id;

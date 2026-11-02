@@ -19,7 +19,7 @@ public static class RequestBuilder
     private static readonly Dictionary<string, string> Ids = JsonSerializer.Deserialize<Dictionary<string, string>>(Data.Asset("attributes.json"))!;
     private static readonly Dictionary<string, Dictionary<string, string>> Domains = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(Data.Asset("domains.json"))!;
     public static string AttributeId(string name) => Ids[name];
-    public static byte[] Hex(string value, string name, int maximum = 512)
+    public static byte[] Hex(string value, string name, int maximum = 1024)
     {
         string text = string.Concat(value.Where(c => !char.IsWhiteSpace(c)));
         if (text.Length % 2 != 0 || text.Length > maximum * 2 || text.Any(c => !Uri.IsHexDigit(c)))
@@ -34,7 +34,7 @@ public static class RequestBuilder
     }
     public static int KeyBits(Feature f, Algorithm a)
     {
-        int bits = Number(f, "keyBits", a.Family == "digest" ? 0 : 1, 4096);
+        int bits = Number(f, "keyBits", a.Family == "digest" || a.Id == "TEE_ALG_LMS" ? 0 : 1, 8192);
         if (a.KeyType is "TEE_TYPE_ECDSA_KEYPAIR" or "TEE_TYPE_ECDH_KEYPAIR")
             return Data.Catalog.Curves.Single(c => c.Id == Scenarios.Value(f, "curve")).Bits;
         if (Scenarios.Value(f, "keySource") == "input" &&
@@ -54,17 +54,17 @@ public static class RequestBuilder
         var output = new RequestData();
         Algorithm? a = Scenarios.Algorithm(f);
         string V(string key) => Scenarios.Value(f, key);
-        byte[] H(string key, int maximum = 512) => Hex(V(key), key, maximum);
+        byte[] H(string key, int maximum = 1024) => Hex(V(key), key, maximum);
         void Add(string id, uint group, byte[] bytes, bool required = false)
         {
             if (required && bytes.Length == 0) throw new ArgumentException("Required input: " + id);
             if (bytes.Length == 0 && !required) return;
-            if (bytes.Length > 512) throw new ArgumentException("Attribute exceeds 512 bytes: " + id);
+            if (bytes.Length > 1024) throw new ArgumentException("Attribute exceeds 1024 bytes: " + id);
             if (!Ids.ContainsKey(id)) throw new ArgumentException("Unknown GP attribute: " + id);
             output.Attributes.Add(new(id, group, bytes));
         }
         output.Message = H("message", 2048);
-        if (a == null || f.Kind == "algorithm_support") return output;
+        if (a == null || f.Kind == "algorithm_support" || a.Family == "digest") return output;
         output.Aad = H("aad", 1024);
         if (FieldRules.Visible(f, "iv") && V("ivSource") == "input") output.Iv = H("iv", 256);
         bool manual = V("keySource") == "input";

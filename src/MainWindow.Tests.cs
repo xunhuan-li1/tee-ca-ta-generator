@@ -185,6 +185,18 @@ public sealed partial class MainWindow
             Check(Scenarios.Value(activeFeature, "keyBits") == "128" &&
                 ((ComboBoxItem)((ComboBox)optionInputs["keyBits"]).SelectedItem).Tag.Equals("128"),
                 "Switching from AES-192 to SM4 selects its valid default size");
+            activeFeature = Workflows.All.Single(w => w.Id == "ae").Create();
+            project.Features = [activeFeature];
+            activeUseCase = "ae";
+            activeFeature.Algorithm = "TEE_ALG_AES_CCM";
+            activeFeature.Options["tagBits"] = "32";
+            Render();
+            var aeAlgorithms = (ComboBox)optionInputs["algorithm"];
+            aeAlgorithms.SelectedItem = aeAlgorithms.Items.Cast<ComboBoxItem>()
+                .Single(item => (string)item.Tag == "TEE_ALG_AES_GCM");
+            RenderEditor();
+            Check(Scenarios.Value(activeFeature, "tagBits") == "128" && ValidateInputs(),
+                "CCM-to-GCM switch replaces an unsupported tag length with the default");
             activeFeature = Workflows.All.Single(w => w.Id == "mac").Create();
             project.Features = [activeFeature];
             activeUseCase = "mac";

@@ -2,7 +2,7 @@
 #include "gp_support.h"
 @DEFINES@
 
-TEE_Result @FUNCTION@(const struct gp_request *request, struct gp_response *response)
+TEE_Result @FUNCTION@(struct gp_request *request, struct gp_response *response)
 {
     uint8_t *buffer = TEE_Malloc(32, TEE_MALLOC_FILL_ZERO);
     uint8_t *resized;

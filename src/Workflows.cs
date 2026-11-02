@@ -4,7 +4,8 @@ namespace GpStudio;
 public sealed record UseCase(string Id, string Kind, string Chinese, string English,
     string Category, string DefaultAlgorithm = "", string AlgorithmPrefix = "", bool Advanced = false)
 {
-    public bool Accepts(Algorithm a) => Kind == "algorithm_support" || a.Family == Kind &&
+    public bool Accepts(Algorithm a) => Kind == "algorithm_support" || a.Limitation.Length == 0 && a.Family == Kind &&
+        (Id != "pqc_sign" || Core14.IsPqc(a)) &&
         (AlgorithmPrefix.Length == 0 || (a.Id.StartsWith("ALG_") ? "TEE_" + a.Id : a.Id).StartsWith(AlgorithmPrefix, StringComparison.Ordinal));
     public Feature Create() => new() { Kind = Kind, Scenario = Id, Algorithm = DefaultAlgorithm };
 }
@@ -29,6 +30,9 @@ public static class Workflows
         new("dh", "derive", "DH 密钥协商", "DH key agreement", "Crypto", "TEE_ALG_DH_DERIVE_SHARED_SECRET", "TEE_ALG_DH", true),
         new("eddsa", "sign", "EdDSA 签名 / 验签", "EdDSA signatures", "Crypto", "TEE_ALG_ED25519", "TEE_ALG_ED", true),
         new("xdh", "derive", "XDH 密钥协商", "XDH key agreement", "Crypto", "TEE_ALG_X25519", "TEE_ALG_X", true),
+        new("pqc_sign", "sign", "后量子签名 / 验签", "Post-quantum signatures", "Crypto", "TEE_ALG_MLDSA"),
+        new("kem", "kem", "密钥封装 / 解封装", "Key encapsulation / decapsulation", "Crypto", "TEE_ALG_MLKEM"),
+        new("remote_session", "remote_session", "调用远程 TEE 中的 TA", "Call a remote TA", "Communication"),
         new("random", "random", "生成随机数", "Generate random bytes", "Core"),
         new("time", "time", "时间与等待", "Time and wait", "Core"),
         new("persistent_time", "persistent_time", "TA 持久时间", "TA persistent time", "Core", Advanced:true),
@@ -40,8 +44,6 @@ public static class Workflows
         new("objects", "objects", "临时密钥对象", "Transient key objects", "Storage", Advanced:true),
         new("key_attributes", "objects", "密钥属性与用途", "Key attributes and usage", "Storage", Advanced:true),
         new("memory", "memory", "内存管理", "Memory management", "Core", Advanced:true),
-        new("bigint", "bigint", "大整数运算", "Big integer arithmetic", "Arithmetic", Advanced:true),
-        new("fmm", "fmm", "快速模乘", "Fast modular multiplication", "Arithmetic", Advanced:true),
         new("internal_client", "session", "TA 调用另一个 TA", "Call another TA", "Communication"),
         new("shared_memory", "shared_memory", "CA 共享内存", "Client shared memory", "Communication"),
         new("cancel_client", "client_cancel", "CA 取消请求", "Client cancellation", "Communication", Advanced:true),

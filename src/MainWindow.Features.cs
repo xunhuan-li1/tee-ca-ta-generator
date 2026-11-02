@@ -200,18 +200,20 @@ public sealed partial class MainWindow
             var algorithm = Choice(T("算法与模式", "Algorithm and mode"), Workflows.Algorithms(w).Select(a => (a.Id, a.Id.Replace("TEE_ALG_", ""))), feature.Algorithm,
                 value => {
                     feature.Algorithm = value;
-                    Option? keySize = scenario.Fields.SingleOrDefault(field => field.Key == "keyBits");
-                    string[]? allowedSizes = keySize == null ? null : FieldRules.Choices(feature, keySize);
-                    if (feature.Options.TryGetValue("keyBits", out string? bits) &&
-                        allowedSizes != null && !allowedSizes.Contains(bits))
-                        feature.Options.Remove("keyBits");
+                    foreach (Option field in scenario.Fields) {
+                        string[]? choices = FieldRules.Choices(feature, field);
+                        if (choices != null && feature.Options.TryGetValue(field.Key, out string? selected) &&
+                            !choices.Contains(selected))
+                            feature.Options.Remove(field.Key);
+                    }
                     Changed(); RenderAvailable(); RenderSelected(); DeferEditor();
                 }, editor);
             optionInputs["algorithm"] = algorithm;
         }
         foreach (Option field in scenario.Fields.Where(f => FieldRules.Visible(feature, f.Key)).OrderBy(f => f.Key is "message" or "aad" ? 2 : f.Key is "streaming" or "copyReuse" ? 1 : 0))
         {
-            string label = english ? field.English : field.Label;
+            string label = field.Key == "keyBits" && Scenarios.Algorithm(feature) is Algorithm selectedAlgorithm && Core14.IsPqc(selectedAlgorithm)
+                ? T("参数集", "Parameter set") : english ? field.English : field.Label;
             string[]? choicesForField = FieldRules.Choices(feature, field);
             if (field.Type == "toggle")
             {
@@ -263,11 +265,15 @@ public sealed partial class MainWindow
     }
     private string RelatedApis(Feature f)
     {
-        string template = f.Kind switch { "client_cancel" => "cancellation", "shared_memory" => "memory", "derive" when f.Algorithm == "TEE_ALG_SM2_KEP" => "sm2_kep", _ => f.Kind };
-        string code = Generator.SelectTemplate(f, Data.Asset("templates/" + template + ".c"));
+        string template = Generator.TemplateName(f);
+        string code = Core14.CheckedCalls(Generator.SelectTemplate(f, Data.Asset("templates/" + template + ".c")), project.PanicSafe);
         return string.Join("\n\n", Data.Catalog.Apis.Where(a => code.Contains(a.Name + "(" )).Select(a => a.Prototype));
     }
-    private void DeferEditor() => Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(RenderEditor));
+    private void DeferEditor() => Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => {
+        bool prior = rebuilding;
+        try { Guard(RenderEditor); }
+        finally { rebuilding = prior; }
+    }));
     private string ChoiceLabel(string value) => value switch {
         "same" => T("与 OAEP 摘要一致", "Same as OAEP digest"),
         "generate" => T("自动生成", "Generate automatically"), "input" => T("手动输入", "Provide input"), "compute" => T("生成 ZA 计算函数", "Generate ZA function"),

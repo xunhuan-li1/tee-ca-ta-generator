@@ -17,6 +17,7 @@ public sealed class Project
     public bool GenerateCa { get; set; } = true;
     public string Login { get; set; } = "TEEC_LOGIN_PUBLIC";
     public long GroupId { get; set; }
+    public bool PanicSafe { get; set; }
     public bool SessionContext { get; set; }
     public bool SingleInstance { get; set; }
     public bool MultiSession { get; set; }
@@ -51,7 +52,7 @@ public sealed class Feature
 }
 
 public sealed record Algorithm(string Id, string Value, string Family, string Digest,
-    string KeyType, int KeyBits, int DigestBytes, int BlockSize, bool Legacy);
+    string KeyType, int KeyBits, int DigestBytes, int BlockSize, bool Legacy, string Limitation = "");
 public sealed record Api(string Name, string Group, string Prototype, bool Optional, bool Deprecated);
 public sealed record Curve(string Id, string Value, int Bits, bool Generic);
 public sealed record Option(string Key, string Label, string English, string Default,
@@ -86,21 +87,27 @@ public static class Data
     public static Project Read(string path)
     {
         using JsonDocument document = JsonDocument.Parse(File.ReadAllText(path));
-        void Duplicates(JsonElement element)
+        void Duplicates(JsonElement element, string path)
         {
+            if (element.ValueKind == JsonValueKind.Null)
+                throw new ArgumentException(path + " must not be null.");
             if (element.ValueKind == JsonValueKind.Object)
             {
                 var names = new HashSet<string>(StringComparer.Ordinal);
                 foreach (JsonProperty property in element.EnumerateObject())
                 {
                     if (!names.Add(property.Name)) throw new ArgumentException("Duplicate property: " + property.Name);
-                    Duplicates(property.Value);
+                    Duplicates(property.Value, path + "." + property.Name);
                 }
             }
-            else if (element.ValueKind == JsonValueKind.Array)
-                foreach (JsonElement item in element.EnumerateArray()) Duplicates(item);
+            else if (element.ValueKind == JsonValueKind.Array) {
+                int index = 0;
+                foreach (JsonElement item in element.EnumerateArray()) Duplicates(item, path + "[" + index++ + "]");
+            }
         }
-        Duplicates(document.RootElement);
+        if (document.RootElement.ValueKind != JsonValueKind.Object)
+            throw new ArgumentException("Project must be a JSON object.");
+        Duplicates(document.RootElement, "Project");
         foreach (string field in new[] { "FormatVersion", "Name", "Uuid", "Features" })
             if (!document.RootElement.TryGetProperty(field, out _)) throw new ArgumentException("Missing field: " + field);
         Project project = document.RootElement.Deserialize<Project>(Json) ?? throw new ArgumentException("Project is required.");
